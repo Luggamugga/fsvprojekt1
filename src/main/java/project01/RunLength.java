@@ -56,7 +56,16 @@ System.out.println(result);
 
     public static Integer sum(List<Run<Integer>> runs) {
         // TODO: implement this method (you may peek)
+        Integer sum;
+        sum = 0;
 
-        return 0;
+        for (Run<Integer> element : runs) {
+            for (int i = 0; i < element.count; i++) {
+                sum += element.elem;
+            }
+        }
+
+
+        return sum;
     }
 }
