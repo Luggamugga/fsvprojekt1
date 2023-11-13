@@ -15,7 +15,24 @@ public class RunLength {
         List<Run<T>> result = new ArrayList<>();
         
         // TODO: implement this method
-
+        int counter = 1;
+        for(int i = 0;i<input.size();i++){
+            if(i == input.size()-1){
+                Run<T> Tuple = new Run<T>(counter,input.get(i));
+                System.out.println(Tuple);
+                result.add(Tuple);
+                break;
+            }
+            if(input.get(i) == input.get(i + 1)){
+                counter++;
+            } else {
+                Run<T> Tuple = new Run<T>(counter,input.get(i));
+                System.out.println(Tuple);
+                result.add(Tuple);
+                counter = 1;
+            }
+        }
+System.out.println(result);
         return result;
     }
 
