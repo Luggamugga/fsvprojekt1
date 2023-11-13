@@ -40,13 +40,32 @@ System.out.println(result);
         List<T> result = new ArrayList<>();
 
         // TODO: implement this method
-
-        return result;
+        if (runs.equals(null)) {
+            return result;
+        }
+        else {
+            for (Run<T> element : runs) {
+                int c = element.count;
+                for (int i = 0; i<element.count; i++) {
+                    result.add(element.elem);
+                }
+            }
+            return result;
+        }
     }
 
     public static Integer sum(List<Run<Integer>> runs) {
         // TODO: implement this method (you may peek)
+        Integer sum;
+        sum = 0;
 
-        return 0;
+        for (Run<Integer> element : runs) {
+            for (int i = 0; i < element.count; i++) {
+                sum += element.elem;
+            }
+        }
+
+
+        return sum;
     }
 }
