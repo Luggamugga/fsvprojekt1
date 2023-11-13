@@ -23,8 +23,18 @@ public class RunLength {
         List<T> result = new ArrayList<>();
 
         // TODO: implement this method
-
-        return result;
+        if (runs.equals(null)) {
+            return result;
+        }
+        else {
+            for (Run<T> element : runs) {
+                int c = element.count;
+                for (int i = 0; i<element.count; i++) {
+                    result.add(element.elem);
+                }
+            }
+            return result;
+        }
     }
 
     public static Integer sum(List<Run<Integer>> runs) {
