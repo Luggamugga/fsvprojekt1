@@ -13,26 +13,24 @@ public class RunLength {
         output: (1,A) (2,B) (1,C) (4,A) (3,C)
          */
         List<Run<T>> result = new ArrayList<>();
-        
+
         // TODO: implement this method
         int counter = 1;
-        for(int i = 0;i<input.size();i++){
-            if(i == input.size()-1){
-                Run<T> Tuple = new Run<T>(counter,input.get(i));
-                System.out.println(Tuple);
+        for (int i = 0; i < input.size(); i++) {
+            if (i == input.size() - 1) {
+                Run<T> Tuple = new Run<T>(counter, input.get(i));
                 result.add(Tuple);
                 break;
             }
-            if(input.get(i) == input.get(i + 1)){
+            if (input.get(i) == input.get(i + 1)) {
                 counter++;
             } else {
-                Run<T> Tuple = new Run<T>(counter,input.get(i));
-                System.out.println(Tuple);
+                Run<T> Tuple = new Run<T>(counter, input.get(i));
                 result.add(Tuple);
                 counter = 1;
             }
         }
-System.out.println(result);
+        System.out.println(result);
         return result;
     }
 
@@ -40,18 +38,13 @@ System.out.println(result);
         List<T> result = new ArrayList<>();
 
         // TODO: implement this method
-        if (runs.equals(null)) {
-            return result;
-        }
-        else {
-            for (Run<T> element : runs) {
-                int c = element.count;
-                for (int i = 0; i<element.count; i++) {
-                    result.add(element.elem);
-                }
+        for (Run<T> element : runs) {
+            int c = element.count;
+            for (int i = 0; i < element.count; i++) {
+                result.add(element.elem);
             }
-            return result;
         }
+        return result;
     }
 
     public static Integer sum(List<Run<Integer>> runs) {
