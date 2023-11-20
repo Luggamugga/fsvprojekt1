@@ -39,7 +39,6 @@ public class RunLength {
 
         // TODO: implement this method
         for (Run<T> element : runs) {
-            int c = element.count;
             for (int i = 0; i < element.count; i++) {
                 result.add(element.elem);
             }
@@ -49,15 +48,13 @@ public class RunLength {
 
     public static Integer sum(List<Run<Integer>> runs) {
         // TODO: implement this method (you may peek)
-        Integer sum;
-        sum = 0;
+        int sum = 0;
 
         for (Run<Integer> element : runs) {
             for (int i = 0; i < element.count; i++) {
-                sum += element.elem;
+                sum += element.elem() + element.count();
             }
         }
-
 
         return sum;
     }

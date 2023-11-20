@@ -9,10 +9,19 @@ public class Histogram {
 
     public Histogram(List<Integer> data) {
         // TODO: initialize attributes
+        if (data == null || data.isEmpty()) {
+            throw new IllegalArgumentException("data cannot be empty");
+        }
+
+        min = data.stream().min(Integer::compare).orElseThrow(IllegalArgumentException::new);
+        max = data.stream().max(Integer::compare).orElseThrow(IllegalArgumentException::new);
+
+        frequency = new int [max - min + 1];
 
         for (int value : data) {
             // TODO: update frequencies here
             // Hint: look at method count below
+            frequency [value - min]++;
         }
     }
 
