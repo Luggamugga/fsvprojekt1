@@ -1,12 +1,16 @@
 package project01;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import net.jqwik.api.constraints.StringLength;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RunLengthTests {
 
@@ -20,7 +24,7 @@ public class RunLengthTests {
     void example() {
         List<String> input = List.of("A", "A", "B");
         List<Run<String>> expected = List.of(new Run<>(2, "A"), new Run<>(1, "B"));
-        Assertions.assertEquals(expected, RunLength.encode(input));
+        assertEquals(expected, RunLength.encode(input));
     }
 
     public static Integer sum(List<Integer> elems) {
@@ -28,9 +32,13 @@ public class RunLengthTests {
     }
 
     @Property
-    void canDecode(@ForAll List<String> input) {
-        // TODO: check that encoding the input and then decoding the resulting runs
-        //       gives back a list that is equal to the original input
+    void canDecode(@ForAll List<@StringLength(min = 1, max = 20) String> input) {
+        List list = new ArrayList(input);
+        List encoded = RunLength.encode(list);
+        List<Object> decoded = RunLength.decode(encoded);
+
+        assertEquals(list, decoded);
+
     }
 
     @Property

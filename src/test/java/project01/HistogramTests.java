@@ -26,7 +26,6 @@ public class HistogramTests {
         assertEquals(-2, histogram.min());
         assertEquals(9, histogram.max());
 
-        // TODO: add some more checks here
         assertEquals(0, histogram.count(-3));
         assertEquals(1, histogram.count(-2));
         assertEquals(0, histogram.count(-1));
@@ -41,7 +40,6 @@ public class HistogramTests {
         assertEquals(0, histogram.count(8));
         assertEquals(1, histogram.count(9));
         assertEquals(0, histogram.count(10));
-        // TODO: add some more checks here
     }
 
     int countOccurrences(int value, List<Integer> data) {
@@ -58,7 +56,7 @@ public class HistogramTests {
     @Property
     void histogramCount(
             @ForAll @NotEmpty List<@IntRange(min = -1000000, max = 1000000) Integer> data,
-            @ForAll @IntRange(min = -1000000, max =1000000) int value
+            @ForAll @IntRange(min = -1000000, max = 1000000) int value
     ) {
         Histogram histogram = new Histogram(data);
         int expected = countOccurrences(value, data);
